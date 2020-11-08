@@ -1,0 +1,75 @@
+%% WJG 11/6/2020 Plotting Code
+clear all; close all
+%% loading data
+%traces
+TC=csvread('TracePath1.csv',2);
+TD=csvread('TracePath2.csv',2);
+TE=csvread('TracePath3.csv',2);
+%motor Position
+MotorDisp=csvread('MotorDisp.csv',2);
+%positiondata
+XCY=csvread('G2CY.csv',2);
+XCZ=csvread('G2CZ.csv',2);
+XDY=csvread('G2DY.csv',2);
+XDZ=csvread('G2DZ.csv',2);
+XEY=csvread('G2EY.csv',2);
+XEZ=csvread('G2EZ.csv',2);
+%velocity data
+VCY=csvread('G3CY.csv',2);
+VCZ=csvread('G3CZ.csv',2);
+VDY=csvread('G3DY.csv',2);
+VDZ=csvread('G3DZ.csv',2);
+VEY=csvread('G3EY.csv',2);
+VEZ=csvread('G3EZ.csv',2);
+%acceleration data
+ACY=csvread('G4CY.csv',2);
+ACZ=csvread('G4CZ.csv',2);
+ADY=csvread('G4DY.csv',2);
+ADZ=csvread('G4DZ.csv',2);
+AEY=csvread('G4EY.csv',2);
+AEZ=csvread('G4EZ.csv',2);
+%reactions
+RA=csvread('G5A1.csv',2);
+RB=csvread('G5B.csv',2);
+RC=csvread('G5C.csv',2);
+RD=csvread('G5D.csv',2);
+RE=csvread('G5E.csv',2);
+%% Trajectory plots
+figure
+plot(TC(:,3),TC(:,2)),hold on, 
+plot(TD(:,3),TD(:,2)),plot(TE(:,3),TE(:,2)),
+grid minor, xlabel('Z Position(mm)'), ylabel('Y Position (mm)'), 
+title 'Trajectories the Three Primary Pins From the Origin'
+legend ('C', 'D', 'E','location','southwest')
+%% Position plots
+figure
+plot(MotorDisp(:,2),XCY(:,2),MotorDisp(:,2),XDY(:,2),MotorDisp(:,2),XEY(:,2) ),hold, grid minor, xlabel('Actuator Displacement(mm)'), ylabel('Position Y (mm)'), 
+title 'Y Vertical Position Graphs of the Pins'
+legend ('C', 'D', 'E','location','southeast')
+figure
+plot(MotorDisp(:,2),XCZ(:,2),MotorDisp(:,2),XDZ(:,2),MotorDisp(:,2),XEZ(:,2) ),hold, grid minor, xlabel('Actuator Displacement(mm)'), ylabel('Position Z (mm)'), 
+title 'Z Horizontal Position Graphs of the Pins'
+legend ('C', 'D', 'E','location','east')
+%% Velocity plots
+figure
+plot(MotorDisp(:,2),VCY(:,2),MotorDisp(:,2),VDY(:,2),MotorDisp(:,2),VEY(:,2) ),hold, grid minor, xlabel('Actuator Displacement(mm)'), ylabel('Velocity Y (mm/s)'), 
+title 'Y Vertical Velocity Graphs of the Pins'
+legend ('C', 'D', 'E','location','southeast')
+figure
+plot(MotorDisp(:,2),VCZ(:,2),MotorDisp(:,2),VDZ(:,2),MotorDisp(:,2),VEZ(:,2) ),hold, grid minor, xlabel('Actuator Displacement(mm)'), ylabel('Velocity Z (mm/s)'), 
+title 'Z Horizontal Velocity Graphs of the Pins'
+legend ('C', 'D', 'E','location','south')
+%% Acceleration plots
+figure
+plot(MotorDisp(:,2),ACY(:,2),MotorDisp(:,2),ADY(:,2),MotorDisp(:,2),AEY(:,2),'-' ),hold, grid minor, xlabel('Actuator Displacement(mm)'), ylabel('Acceleration Y (mm/s^2)'), 
+title 'Y Vertical Acceleration Graphs of the Pins'
+legend ('C', 'D', 'E','location','southeast')
+figure
+plot(MotorDisp(:,2),ACZ(:,2),MotorDisp(:,2),ADZ(:,2),MotorDisp(:,2),AEZ(:,2) ),hold, grid minor, xlabel('Actuator Displacement(mm)'), ylabel('Acceleration Z (mm/s^2)'), 
+title 'Z Horizontal Velocity Graphs of the Pins'
+legend ('C', 'D', 'E','location','south')
+%% Reaction plots
+figure
+plot(MotorDisp(:,2),RA(:,2),MotorDisp(:,2),RB(:,2),MotorDisp(:,2),RC(:,2),MotorDisp(:,2),RD(:,2),MotorDisp(:,2),RE(:,2) ),hold, grid minor, xlabel('Actuator Displacement(mm)'), ylabel('Acceleration Z (mm/s^2)'), 
+title 'Reaction Force Magnitude of the Pins'
+legend ('A1','B','C', 'D', 'E','location','south')
