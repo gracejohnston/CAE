@@ -70,6 +70,6 @@ title 'Z Horizontal Velocity Graphs of the Pins'
 legend ('C', 'D', 'E','location','south')
 %% Reaction plots
 figure
-plot(MotorDisp(:,2),RA(:,2),MotorDisp(:,2),RB(:,2),MotorDisp(:,2),RC(:,2),MotorDisp(:,2),RD(:,2),MotorDisp(:,2),RE(:,2) ),hold, grid minor, xlabel('Actuator Displacement(mm)'), ylabel('Acceleration Z (mm/s^2)'), 
+plot(MotorDisp(:,2),RA(:,2),'-',MotorDisp(:,2),RB(:,2),'-',MotorDisp(:,2),RC(:,2),'-',MotorDisp(:,2),RD(:,2),'-',MotorDisp(:,2),RE(:,2),'-' ),hold, grid minor, xlabel('Force (Newtons)'), ylabel('Acceleration Z (mm/s^2)'), 
 title 'Reaction Force Magnitude of the Pins'
 legend ('A1','B','C', 'D', 'E','location','south')
